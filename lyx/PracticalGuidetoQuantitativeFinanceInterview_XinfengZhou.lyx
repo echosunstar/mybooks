@@ -1,0 +1,2703 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{mathtools} % loads amsmath, for math environments etc
+\usepackage{tikz}
+\usetikzlibrary{shapes,positioning,arrows,fit,calc,graphs,graphs.standard}
+\usepackage[nosf]{kpfonts}
+\usepackage[t1]{sourcesanspro}
+\usepackage{multicol}
+\usepackage{wrapfig}
+\usepackage[top=0mm,bottom=4mm,left=3mm,right=2mm]{geometry}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage{microtype}
+\usepackage{setspace}
+\usepackage{tikz}
+\usetikzlibrary{trees}
+\usepackage{enumitem}
+\usepackage{kpfonts,amssymb,empheq,fancybox}
+\usepackage{enumitem}
+\usepackage{pgfplots}
+\usepackage{pagecolor}
+
+\usepackage{xcolor}
+\usepackage{soul}
+\colorlet{highlightgreen}{green!10}
+\sethlcolor{highlightgreen}
+
+%% cell colours
+\usepackage{colortbl}
+
+\setitemize{leftmargin=*,noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt}
+
+\let\bar\overline
+\let\displaystyle\textstyle
+
+\definecolor{myblue}{cmyk}{1,.72,0,.38}
+
+\def\firstcircle{(0,0) circle (1.5cm)}
+\def\secondcircle{(0:2cm) circle (1.5cm)}
+
+\colorlet{circle edge}{myblue}
+\colorlet{circle area}{myblue!5}
+
+\tikzset{filled/.style={fill=circle area, draw=circle edge, thick},
+    outline/.style={draw=circle edge, thick}}
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\everymath\expandafter{\the\everymath \color{myblue}}
+\everydisplay\expandafter{\the\everydisplay \color{myblue}}
+
+\renewcommand{\baselinestretch}{.8}
+\pagestyle{empty}
+
+\global\mdfdefinestyle{header}{%
+linecolor=gray,linewidth=1pt,%
+leftmargin=6mm,rightmargin=6mm,skipbelow=1mm,skipabove=1mm,
+}
+
+\newcommand{\ffbox}[1]{%
+{% open a group for a local setting
+\setlength{\fboxsep}{-2\fboxrule}% the rule will be inside the box boundary
+\fbox{\hspace{1.2pt}\strut#1\hspace{1.2pt}}% print the box, with some padding at the left and right
+}% close the group
+}
+
+\newcommand{\header}{
+\begin{mdframed}[style=header]
+\scriptsize
+\textbf{Practical Guide to Quant interviews\\ ~Alain~Chenier,~page~\thepage,  \today{} }
+\end{mdframed}
+}
+
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {.1ex}%
+                                {.1ex}%x
+                                {\color{blue}\sffamily\small\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{1}{0mm}%
+                                {.1ex}%
+                                {.1ex}%x
+                                {\sffamily\bfseries}}
+
+\def\textSq#1{%
+\begingroup% make boxes and lengths local
+\setlength{\fboxsep}{0.001pt}% SET ANY DESIRED PADDING HERE
+\setbox1=\hbox{#1}% save the contents
+\setlength{\@tempdima}{\maxof{\wd1}{\ht1+\dp1}}% size of the box
+\setlength{\@tempdimb}{(\@tempdima-\ht1+\dp1)/2}% vertical raise
+\raise-\@tempdimb\hbox{\fbox{\vbox to \@tempdima{%
+\vfil\hbox to \@tempdima{\hfil\copy1\hfil}\vfil}}}%
+\endgroup%
+}
+\def\Sq#1{\textSq{\ensuremath{#1}}}%
+
+\def\multi@column@out{%
+   \ifnum\outputpenalty <-\@M
+   \speci@ls \else
+   \ifvoid\colbreak@box\else
+     \mult@info\@ne{Re-adding forced
+               break(s) for splitting}%
+     \setbox\@cclv\vbox{%
+        \unvbox\colbreak@box
+        \penalty-\@Mv\unvbox\@cclv}%
+   \fi
+   \splittopskip\topskip
+   \splitmaxdepth\maxdepth
+   \dimen@\@colroom
+   \divide\skip\footins\col@number
+   \ifvoid\footins \else
+      \leave@mult@footins
+   \fi
+   \let\ifshr@kingsaved\ifshr@king
+   \ifvbox \@kludgeins
+     \advance \dimen@ -\ht\@kludgeins
+     \ifdim \wd\@kludgeins>\z@
+        \shr@nkingtrue
+     \fi
+   \fi
+   \process@cols\mult@gfirstbox{%
+%%%%% START CHANGE
+\ifnum\count@=\numexpr\mult@rightbox+2\relax
+          \setbox\count@\vsplit\@cclv to \dimexpr \dimen@-1cm\relax
+\setbox\count@\vbox to \dimen@{\vbox to 1cm{\header}\unvbox\count@\vss}%
+\else
+      \setbox\count@\vsplit\@cclv to \dimen@
+\fi
+%%%%% END CHANGE
+            \set@keptmarks
+            \setbox\count@
+                 \vbox to\dimen@
+                  {\unvbox\count@
+                   \remove@discardable@items
+                   \ifshr@nking\vfill\fi}%
+           }%
+   \setbox\mult@rightbox
+       \vsplit\@cclv to\dimen@
+   \set@keptmarks
+   \setbox\mult@rightbox\vbox to\dimen@
+          {\unvbox\mult@rightbox
+           \remove@discardable@items
+           \ifshr@nking\vfill\fi}%
+   \let\ifshr@king\ifshr@kingsaved
+   \ifvoid\@cclv \else
+       \unvbox\@cclv
+       \ifnum\outputpenalty=\@M
+       \else
+          \penalty\outputpenalty
+       \fi
+       \ifvoid\footins\else
+         \PackageWarning{multicol}%
+          {I moved some lines to
+           the next page.\MessageBreak
+           Footnotes on page
+           \thepage\space might be wrong}%
+       \fi
+       \ifnum \c@tracingmulticols>\thr@@
+                    \hrule\allowbreak \fi
+   \fi
+   \ifx\@empty\kept@firstmark
+      \let\firstmark\kept@topmark
+      \let\botmark\kept@topmark
+   \else
+      \let\firstmark\kept@firstmark
+      \let\botmark\kept@botmark
+   \fi
+   \let\topmark\kept@topmark
+   \mult@info\tw@
+        {Use kept top mark:\MessageBreak
+          \meaning\kept@topmark
+         \MessageBreak
+         Use kept first mark:\MessageBreak
+          \meaning\kept@firstmark
+        \MessageBreak
+         Use kept bot mark:\MessageBreak
+          \meaning\kept@botmark
+        \MessageBreak
+         Produce first mark:\MessageBreak
+          \meaning\firstmark
+        \MessageBreak
+        Produce bot mark:\MessageBreak
+          \meaning\botmark
+         \@gobbletwo}%
+   \setbox\@cclv\vbox{\unvbox\partial@page
+                      \page@sofar}%
+   \@makecol\@outputpage
+     \global\let\kept@topmark\botmark
+     \global\let\kept@firstmark\@empty
+     \global\let\kept@botmark\@empty
+     \mult@info\tw@
+        {(Re)Init top mark:\MessageBreak
+         \meaning\kept@topmark
+         \@gobbletwo}%
+   \global\@colroom\@colht
+   \global \@mparbottom \z@
+   \process@deferreds
+   \@whilesw\if@fcolmade\fi{\@outputpage
+      \global\@colroom\@colht
+      \process@deferreds}%
+   \mult@info\@ne
+     {Colroom:\MessageBreak
+      \the\@colht\space
+              after float space removed
+              = \the\@colroom \@gobble}%
+    \set@mult@vsize \global
+  \fi}
+
+\makeatother
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 0
+\use_package amssymb 0
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+columnseprule}{0.1pt}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{multicols}{2}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Brain teasers
+\end_layout
+
+\begin_layout Subsection
+Pirates distributing gold
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hl{5 Pirates distribute 100 gold coins.
+ Senior pirate proposes and all vote, and plan gets approved if 50 
+\backslash
+% vote ok else senior pirate gets killed and  process restarts with 1 fewer
+ pirate.}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+1 pirate 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ not i nteresting 
+\end_layout
+
+\begin_layout Itemize
+2 pirates 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ New pirate #2 gets all the gold, since he will vote for himelf and get
+ just enough (50%) vote
+\end_layout
+
+\begin_layout Itemize
+3 pirates
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ pirate #1 will vote with new pirate # 3 since otherwise case above and
+ pirate #1 gets nothing, So let pirate #1=1 and let pirate #3=99 and let
+ pirate #2=0
+\end_layout
+
+\begin_layout Itemize
+4 pirates 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ pirate #2 wants to avoid above so pirate #2 votes with new pirate #4.
+ So pirate #4=99, pirate #2=1, pirate #1=pirate #3=0
+\end_layout
+
+\begin_layout Itemize
+5 pirates 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ pirate #1,#3 wants to avoid above so pirate #2,#3 votes with new pirate
+ #5.
+ So pirate #5=98, pirate #1=pirate #3=1, pirate #2=pirate #4=0
+\end_layout
+
+\begin_layout Subsection
+Tiger changing to sheep
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hl{100 tigers + 1 sheep.
+ Tiger $
+\backslash
+rightarrow$ Sheep.
+ How many sheep left?}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+1 tiger + 1 sheep 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ 2 sheep - ok as last tiger wotn be eaten
+\end_layout
+
+\begin_layout Itemize
+2 tigers + 1 sheep 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ 1` Tiger + 2 sheep but last tiger runs risk of beign eaten so tiger not
+ moving
+\end_layout
+
+\begin_layout Itemize
+3 tigers + 1 sheep 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ 2 tigers + 2 sheep 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ stays like this else the last tiger will think he might get eaten
+\end_layout
+
+\begin_layout Itemize
+4 tigers + 1 sheep 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ 3 tigers + 2 sheep 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ might be eaten so no
+\end_layout
+
+\begin_layout Itemize
+even number of tigers: no, odd: yes
+\end_layout
+
+\begin_layout Itemize
+100 even so : no
+\end_layout
+
+\begin_layout Subsection
+4 people crossing a river
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hl{A,B,C,D crossa river on one bridge, max 2 people at one time, one torch.
+ A(10mns),B(5),C(2),D(1).
+ Quickest way to all cross and how long does it take ?}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+send 2 slowest A,B together but not on first crossing else one has to come
+ back (slow)
+\end_layout
+
+\begin_layout Itemize
+C,D(2) 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ D(1)
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+A,B(10)
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+C(2)
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+C,D(2)
+\end_layout
+
+\begin_layout Itemize
+=2+1+10+2+2=17
+\end_layout
+
+\begin_layout Itemize
+note quicker than: 
+\end_layout
+
+\begin_layout Itemize
+A,D(10)
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+D(1)
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+B,D(5)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+D(1)
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+C,D(2)
+\end_layout
+
+\begin_layout Itemize
+=10+2+5+1+2=20
+\end_layout
+
+\begin_layout Subsection
+Card game, 52 cards, 2R , 2B, 1R+1B.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hl{52 cards.
+ 2B $
+\backslash
+rightarrow$ Dealer, 2R $
+\backslash
+rightarrow$ You,2R $
+\backslash
+rightarrow 
+\backslash
+emptyset$.
+ 100 to you if you win (more or same number of cards), 0 otherwise.
+ How much to pay for the game?}
+\end_layout
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Itemize
+Always 1R+1B discarded, so always equal number of R,B left, so always ties,
+ so you always win, so pay 100
+\end_layout
+
+\begin_layout Subsection
+Burning rope
+\end_layout
+
+\begin_layout Itemize
+classic - burn rope at both ends , start burnign 2ns 
+\end_layout
+
+\begin_layout Itemize
+x/2 + x/2/2 with x=60 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ 45 mns
+\end_layout
+
+\begin_layout Subsection
+Find defective ball
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hl{12 balls, 1 is lighther or heavier (not sure).
+ You have a balance.
+ Find which one in 3 measurements}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+separate in 3 each time: (1,2,3,4),(5,6,7,8),(9,10,11,12)
+\end_layout
+
+\begin_layout Itemize
+compare (1,2,3,4) vs (5,6,7,8).
+ 
+\end_layout
+
+\begin_layout Itemize
+Same 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+(9,10,11,12) L/H and others normal
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+compare (9,10) vs (N,11)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+same 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+12 L/H
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ compare with N
+\end_layout
+
+\begin_layout Itemize
+(9,10)L
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+9L or 10L 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ compare eg 9 with N
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+else (1,2,3,4) L or (5,6,7,8) (H)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+compare (1,2,5) vs (3,6,N)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+same = 4L 7H 8H 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ 7 vs 8 (and if = choose 4)
+\end_layout
+
+\begin_layout Itemize
+(1,2,5) L = 1L 2L 6H
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ 1 vs 2 (and if = choose 6)
+\end_layout
+
+\begin_layout Itemize
+(1,2,5)H= 5H 3L
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ 3 vs N (and if = choose 5)
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Subsection
+How many trailing zeros in 
+\begin_inset Formula $100!$
+\end_inset
+
+ ?
+\end_layout
+
+\begin_layout Itemize
+0s 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ 10 = 5x2 and more 5s than 2s in 
+\begin_inset Formula $100!$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+count how many 5s and 5x5s in 
+\begin_inset Formula $0\ldots99$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+5 10 15 20 
+\series bold
+25
+\series default
+ 30 35 40 45 
+\series bold
+50
+\series default
+ 55 60 65 70 
+\series bold
+75
+\series default
+ 80 85 90 95 
+\series bold
+100
+\end_layout
+
+\begin_layout Itemize
+24 5s so 24 0s
+\end_layout
+
+\begin_layout Subsection
+Horse race with 25 horses
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hl{25 horses with different speeds.
+ run horses 5 at a time.Find 3 fastest horses}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+5 races : (
+\series bold
+1
+\series default
+,2,3,4,5), (
+\series bold
+6
+\series default
+,7,8,9,10)...(
+\series bold
+21
+\series default
+,22,23,24,25) with 1,6,11,16,21 fastest
+\end_layout
+
+\begin_layout Itemize
+note 1,2,3 might be fastest
+\end_layout
+
+\begin_layout Itemize
+but can elminate last 2in each group: (4,5) (9,10) etc
+\end_layout
+
+\begin_layout Itemize
+race 1,6,11,16,21 and let outcome same
+\end_layout
+
+\begin_layout Itemize
+1 first 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ kills 4,5
+\end_layout
+
+\begin_layout Itemize
+6 second 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ kills 8,9,10
+\end_layout
+
+\begin_layout Itemize
+etc kills 12-15, 16-20,21-25
+\end_layout
+
+\begin_layout Itemize
+left with 1,2,3,6,7.11 with 1 already first
+\end_layout
+
+\begin_layout Itemize
+race 2,3,6,7.11.
+ 
+\end_layout
+
+\begin_layout Itemize
+Done.
+ 7 races, 3 rounds
+\end_layout
+
+\begin_layout Subsection
+Box packing
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hl{Can pack 53 bricks $1 
+\backslash
+times 1 
+\backslash
+times 4$ into $6 
+\backslash
+times 6 
+\backslash
+times 6$ ?}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $531\times1\times4<6^{3}$
+\end_inset
+
+, so this inconclusive
+\end_layout
+
+\begin_layout Itemize
+remember 2D chess board:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $1x2$
+\end_inset
+
+ brick covers 1B 1W
+\end_layout
+
+\begin_layout Itemize
+remove corner ones
+\end_layout
+
+\begin_layout Itemize
+30 squares left, so cannot pack 31 bricks
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Same with 
+\begin_inset Formula $6\times6\times6$
+\end_inset
+
+ but made up of 
+\begin_inset Formula $27\times(2\times2\times2)$
+\end_inset
+
+ B/W cubes
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+14 W + 13 W or 14B + 13W 
+\begin_inset Formula $(2\times2\times2)$
+\end_inset
+
+ cubes
+\end_layout
+
+\begin_layout Itemize
+only 4 x 
+\begin_inset Formula $(1x1x4)$
+\end_inset
+
+ can occupy 1 x 
+\begin_inset Formula $(2\times2\times2)$
+\end_inset
+
+ cubes
+\end_layout
+
+\begin_layout Itemize
+so max = 
+\begin_inset Formula $4\times\min(13,14)=52$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+so cannot pack 53
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+2 dice to represent all days of the month 01-31 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hl{what digits to put on the faces of two dice to represent all days of
+ the month 01 ...
+ 31?}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+any dice can only have 6 number, so need 0s on both dice because : 01..06
+ then 07..09
+\end_layout
+
+\begin_layout Itemize
+need 11 22 so need 1 2 on both
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="6">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cellcolor{green}{3}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cellcolor{green}{4}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cellcolor{green}{5}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cellcolor{green}{6/9!!}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cellcolor{green}{7}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cellcolor{green}{8}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Truth/Liar Guards keeping Good/Bad doors
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hl{1 guard always tells truth, 1 guard always lies, 1 guards good door,
+ 1 guards bad door.
+ What to ask ?}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+2 possibilities: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+{truth:good,liar:bad}
+\end_layout
+
+\begin_layout Itemize
+{truth:bad,liar:good}
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+would other guard say you are keeping good door
+\begin_inset Quotes erd
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Subsection
+Secure message delivery with padlocks on box
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hl{2 people exchange messages inside padlocked box, but only 1 key per padlock?}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Can padlock a box twice:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+send padlocked box with message inside
+\end_layout
+
+\begin_layout Itemize
+let 2nd person padlock it with his own
+\end_layout
+
+\begin_layout Itemize
+remove own padlock + send back
+\end_layout
+
+\begin_layout Itemize
+2nd person removes his own padlock + gets message
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+What colour the last ball ?
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hl{bag with 20B, 14R.
+ Take 2 out at random.
+ If both balls same colour add a B, if different add a R.
+ What is colour of last ball ? what if you started with 20B,13R ?}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+How does the contents of B and R change after each draw ?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+total num decreases by 1 each round, so at soem point total num=1
+\end_layout
+
+\begin_layout Itemize
+both balls B: (B,R) 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ (B,R) [R stays same since drawn Bs]
+\end_layout
+
+\begin_layout Itemize
+both balls R: (B,R) 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ (B+1,R-2)
+\end_layout
+
+\begin_layout Itemize
+1R 1B: (B,R) 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ (B-1,R)
+\end_layout
+
+\begin_layout Itemize
+so R or R-2 : starts odd stays odd, starts even stays even
+\end_layout
+
+\begin_layout Itemize
+so when total num=1 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ R if started with off R, B otherwise
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Which of 4 light switches controls the 1 light bulb ?
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+hl{4 light switches are candidates to control 1 light bulb ? all are currently
+ OFF.
+ Only 1 controls the bulb.
+ How to find which switch controls the  light bulb ?}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+on/off + hot/cold so 4 possibilites and 4 switches so OK
+\end_layout
+
+\begin_layout Itemize
+1/2 on for long time then 1/3 on for short tim
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+on/hot 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ 1
+\end_layout
+
+\begin_layout Itemize
+on/cold 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ 3
+\end_layout
+
+\begin_layout Itemize
+off/cold
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ 4 
+\end_layout
+
+\begin_layout Itemize
+else 2
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Calculate average salary of N people without individual disclosure
+\end_layout
+
+\begin_layout Itemize
+draw Random number, add salaries 1 by one, remove random number
+\end_layout
+
+\begin_layout Subsection
+1000 coins in a room, blindfolded but you know 980 T/20 H.
+ How to separate the coins into 2 piles with same #H by turning them? [Symmetry]
+\end_layout
+
+\begin_layout Itemize
+2 piles:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+pile 1: n coins, m H 
+\begin_inset Formula $\stackrel{turnover}{\rightarrow}$
+\end_inset
+
+n coins, n-m H
+\end_layout
+
+\begin_layout Itemize
+pile 2: 1000-n coins, 20-m H
+\end_layout
+
+\begin_layout Itemize
+n-m = 20-m 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ n=20
+\end_layout
+
+\begin_layout Itemize
+so: take 20 coins at random + turn them over
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Mislabeled bags: 1 bag apple, 1 bag oranges, 1 bag mix.
+ ALL mislabeled.
+ Can take fruit(s) from inside the bags.
+ Which is which ?[Symmetry]
+\end_layout
+
+\begin_layout Itemize
+pick fruit from 'mix' bag
+\end_layout
+
+\begin_layout Itemize
+case 1: if orange 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ mix or orange
+\end_layout
+
+\begin_layout Itemize
+case 2: if apple 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ all apple
+\end_layout
+
+\begin_layout Itemize
+then work out other bags: 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+(case 1 )
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ apple :: mix (because not apple since ALL mislabeled and orange now taken)
+\end_layout
+
+\begin_layout Itemize
+etc
+\end_layout
+
+\begin_layout Subsection
+Sultan calling in 50 wise men, wise men to decide when all have been called,
+ based on state of glass up/down[Symmetry]
+\end_layout
+
+\begin_layout Itemize
+each wise man has memory
+\end_layout
+
+\begin_layout Itemize
+each bar one should flip down if not done that already (leave alone if done
+ already 
+\begin_inset Formula $\leftarrow$
+\end_inset
+
+memory)
+\end_layout
+
+\begin_layout Itemize
+one (special) should flip up if down (
+\begin_inset Formula $\leftarrow$
+\end_inset
+
+ reset), leave up otherwise
+\end_layout
+
+\begin_layout Itemize
+special should count to 49
+\end_layout
+
+\begin_layout Subsection
+Find 2 missing integers in [1..100] [Summation]
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hl{Find 2 missing integers out of 100 in the sequence [1 ...
+ 100]}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $x+y+\sum_{1}^{98}z_{i}=\frac{n(n+1)}{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $x^{2}+y^{2}+\sum_{1}^{98}z_{i}=\frac{n(n+1)(2n+1)}{6}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+solve for x,y (? - pre-supposes we have these sums available)
+\end_layout
+
+\begin_layout Subsection
+Counterfeit coins (I) [Summation]
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hl{There are 10 bags with 100 identical-looking coins in each bag.
+ In all bags but 1, each coin weighs 10g.
+ In the 1 bag, all the coins weigh either 9g or 11g.
+ Find whichis the counterfeit bag in just 1 weighing.}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+take 1 coin from bag 1, 2 coins from bag 2, 10 coins form bag 10
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $1+2+...+10=55$
+\end_inset
+
+ so if bag #i is counterfeit , the coins will weigh 
+\begin_inset Formula $550\pm i$
+\end_inset
+
+.
+ Done.
+\end_layout
+
+\begin_layout Subsection
+Glassballs (classic) [Summation]
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hl{Given 2 glass balls and a 100-story building : ball will not break if
+ dropped from floor number < X, and break otherwise.
+ Find X with minimum number of drops.}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Assume number of drops in the strategy is is N
+\end_layout
+
+\begin_layout Itemize
+1st ball breaks at floor X,then 2nd ball used for 1..X-1
+\end_layout
+
+\begin_layout Itemize
+So that woudl be 1 + (X-1) = X throws = N by assumption
+\end_layout
+
+\begin_layout Itemize
+So X=N, 
+\end_layout
+
+\begin_layout Itemize
+Now assume not break at N.Then have N-1 throws left.
+\end_layout
+
+\begin_layout Itemize
+So try floor # : N+(N-1)=2N-1, and if breaks , use 2nd ball to cover [N+1
+ ...
+ N+(N-1)-1=2N-2]
+\end_layout
+
+\begin_layout Itemize
+So total # floors coverable this way: 
+\begin_inset Formula $N+(N-1)+(N-2)+...+1=\frac{N(N+1)}{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+smallest N such that 
+\begin_inset Formula $\frac{N(N+1)>100}{2}>100$
+\end_inset
+
+ is 
+\begin_inset Formula $N=14$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Find matching socks [Pidgeon Hole]
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hl{Drawer contains 2R, 20Y, 31B.
+ What is minimum number of socks to grab to get a matching pair?}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+3 pidgeon holes: R, Y, B
+\end_layout
+
+\begin_layout Itemize
+So need # pidgeon holes +1 = 3+1=4
+\end_layout
+
+\begin_layout Subsection
+Handshakes [Pidgeon Hole]
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hl{You are in a party with 25 other people, and you shake hands with each
+ of the 25.
+ Other people shake hands with each other at random (they may / may not
+ know each other already).
+ Prove that 2 people shook hands with same number of people.}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+26 people (pidgeons) shake hands from 1 ...
+ 25 times (holes)
+\end_layout
+
+\begin_layout Itemize
+26 pidgeons, 25 holes.
+ Done.
+\end_layout
+
+\begin_layout Subsection
+Strangers in party (Classic) [Pidgeon Hole - but sub-case enumeration really]
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hl{6 people at party.
+ Prove that EITHER 3+ people knew each other before the party, OR 3+ people
+ never met before the party}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Go through the cases with YOU + 5 others
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+You + 3 others
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+either YOu + 2 have met .
+ Done
+\end_layout
+
+\begin_layout Itemize
+Either YOu + 2 others have not met.
+ Done
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Etc...
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+51 Ants inside a single 1 x 1 square.
+ Will 3 ants always covered by a glass of radius 1/7 ? [Pidgeon Hole]
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Not
+\series default
+ a silly question: if ants are tiny and all in a corner, put the glass over
+ that.
+ all 51 covered
+\end_layout
+
+\begin_layout Itemize
+Next try to scatter them around.
+ Question is : can you scatter them enough ? Answer is NO.
+ so the question is not silly.
+\end_layout
+
+\begin_layout Itemize
+Proof: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Divide square into 5x5=25 areas of side length 
+\begin_inset Formula $\frac{1}{5}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+maximum scatter: 2 ants per square, and 51 ants > 2 x 25
+\end_layout
+
+\begin_layout Itemize
+so one square will have 3
+\end_layout
+
+\begin_layout Itemize
+circle of radius R covers 
+\begin_inset Formula $\pi R^{2}$
+\end_inset
+
+, sqaure of side R covers surface 
+\begin_inset Formula $R^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\frac{\pi}{49}$
+\end_inset
+
+ vs 
+\begin_inset Formula $\frac{1}{25}$
+\end_inset
+
+.
+ Done.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Counterfeit coins (II) - [Pidgeon hole with summation - generalisation]
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hl{5 bags with 100 coins in each bag.
+ Coins may weigh 9,10,11g.
+ Each bag has only 1 type of coin and you can take samples.
+ Use the scale to work out which bag has which coins.}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+if 1 bag : 1 weighing of 1 coin.
+ Easy
+\end_layout
+
+\begin_layout Itemize
+if 2 bags : 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+try: 1 coin from bag 1 + 2 coins from bag 2 (say)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $3\cdot3=9$
+\end_inset
+
+ 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ 9 combinations (pigeons)
+\end_layout
+
+\begin_layout Itemize
+sum [-3 ..
+ +3] 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ 7 combinations (holes)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $9>7$
+\end_inset
+
+ so cannot distinguish
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+try: 1 coin from bag 1 + 3 coins from bag 2 (say)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+same 
+\begin_inset Formula $3\cdot3=9$
+\end_inset
+
+ 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ 9 combinations (pigeons) between the 2 bags
+\end_layout
+
+\begin_layout Itemize
+sum [-4 ..
+ +4] 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ 9 combinations (holes)
+\end_layout
+
+\begin_layout Itemize
+check out the sums, confirm that pigeon 
+\begin_inset Formula $\leftrightarrow$
+\end_inset
+
+holes 1-1
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+If 3 bags: 1 + 3 + 9, 4 bags: 1+3+9+27, 5 bags: 1+3+9+27+81
+\end_layout
+
+\begin_layout Itemize
+single weighing each time.
+ Done.
+\end_layout
+
+\begin_layout Subsection
+Prisoners and hats Part 1 - can hear the guess [Modulo arithmetic]
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hl{100 prisoners are given 1 R,B hat each.
+ Prisoners can see each others' hat but not their own.
+ Each prisoner is called in turn and asked to guess his own hat.
+ Others can hear the guess.
+ Strategy to save prisoners ?}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+they all agree that : first prisoner says R if he sees even #R, say
+\end_layout
+
+\begin_layout Itemize
+50-50 chance for first prisoner
+\end_layout
+
+\begin_layout Itemize
+now remaining 99 prisoners = #R + #B and one of #R/#B is odd, one is even
+\end_layout
+
+\begin_layout Itemize
+ie mod2 = 0 or 1
+\end_layout
+
+\begin_layout Itemize
+they know the 1st prisoner thought #R was even, so now it is odd
+\end_layout
+
+\begin_layout Itemize
+so they know because they can check out everyone else.
+\end_layout
+
+\begin_layout Itemize
+works for N colours: x % N = r 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ (x-1) % N = r-1
+\end_layout
+
+\begin_layout Subsection
+Work out a rule to find if N divisible by 9 [Modulo arithmetic]
+\end_layout
+
+\begin_layout Itemize
+write x in powers of 10, note 9=10-1, note a number with all 9s divisible
+ by 9
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula $x=a_{n}10^{n}+a_{n-1}10^{n-1}+a_{1}10+a_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $x=a_{n}(10^{n}-1+1)+a_{n-1}(10^{n-1}-1+1)+a_{1}(10-1+1)+a_{0}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $x=\underbrace{a_{n}(10^{n}-1)+...+a_{1}(10-1)}_{\text{{divisible\,by\,9}}}+a_{n}+a_{n-1}+...+a_{0}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Modulo arithmetic proof:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $b-1\equiv0\mod b-1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $b\equiv1\mod b-1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $b^{i}\equiv1\mod b-1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $a_{i}b^{i}\equiv a_{i}\mod b-1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\sum a_{i}b^{i}\equiv\sum a_{i}\mod b-1$
+\end_inset
+
+ and let b=10 
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Work out a rule to find if N divisible by 11 [Modulo arithmetic]
+\end_layout
+
+\begin_layout Itemize
+Modulo arithmetic proof:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $b+1\equiv0\mod b+1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $b\equiv-1\mod b+1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $b^{i}\equiv-1^{i}\mod b+1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $a_{i}b^{i}\equiv a_{i}(-1)^{i}\mod b+1$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\sum$
+\end_inset
+
+
+\begin_inset Formula $a_{i}b^{i}\equiv\sum a_{i}(-1)^{i}\mod b+1$
+\end_inset
+
+ and let b=10 
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Chameleon colours changing [Modulo arithmetic]
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hl{13R,15G,17B chameleons.
+ Each time 2 with different colours meet, they both change to the third
+ colour.
+ Can they all be the same colour ever ?}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+(R,G,B) 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ transformation is one of:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+(R'=R-1,G'=G-1,B'=B+2) 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ (R'-G') - (R-G) =0 = 0 mod 3 
+\end_layout
+
+\begin_layout Itemize
+(R'=R-1,G'=G+2,B'=B-1) 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ (R'-G') - (R-G)=-3 = 0 mod 3
+\end_layout
+
+\begin_layout Itemize
+(R'=R+2,G'=G-1,B'=B-1) 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ (R'-G') - (R-G) =+3 = 0 mod 3
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+ie colour difference stays = 0 mod 3 with all the transformations
+\end_layout
+
+\begin_layout Itemize
+but with initial conditions:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ALL the diffs = 2,-2,4,-4 mod 3
+\end_layout
+
+\begin_layout Itemize
+ie ALL the diffs are 2,1 mod 3
+\end_layout
+
+\begin_layout Itemize
+so colour diffs cannot ever become 0 mod by the transformations
+\end_layout
+
+\begin_layout Itemize
+but to win must be (0,0,R+G+B), ie colour diff must become 0 mod 3
+\end_layout
+
+\begin_layout Itemize
+so cannot win.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Split coins into piles, multiply and repeat
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hl{start with 1000 coins pile, split into 2 piles x,y, set S=xy.
+ Split x into x1,x2 and y into y1,y2.
+ Now set S=xy+x1x2 + y1y2.
+ Repeat with piles x1 , x2, y1, y2.
+ etc.
+ Untill all piles are 1.
+ What is final sum?}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+x(N-x)
+\end_layout
+
+\begin_layout Itemize
+try :
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+N=2: x=1,y=1, so S(2)=1
+\end_layout
+
+\begin_layout Itemize
+N=3: x=2,y=1, so xy=2, then add earlier case, so S(3)=xy+earlier=2+1=3
+\end_layout
+
+\begin_layout Itemize
+N=4:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+3,1 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ X(n-X) then add S(3)=3+3=6
+\end_layout
+
+\begin_layout Itemize
+2,2
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+X(n-X) then add S(2) + S(2)=4+1+1=6
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+so S(2)=1,S(3)=3,S(4)=6
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ S(2)=1,S(3)-S(2)=2,S(4)-S(3)=3
+\end_layout
+
+\begin_layout Itemize
+So maybe: S(n)=x(N-X)+S(x)+S(N-x) 
+\begin_inset Formula $\stackrel{?}{=}1+2+(n-1)=\frac{n(n-1)}{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Prove by recursion
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Break chocolate bar 6x8 into 2, then again, untill into 1x1 pieces.
+ How many breaks needed?
+\end_layout
+
+\begin_layout Itemize
+Start with 1 piece
+\end_layout
+
+\begin_layout Itemize
+after first break: 2 pieces
+\end_layout
+
+\begin_layout Itemize
+after second break: 3 pieces
+\end_layout
+
+\begin_layout Itemize
+...
+ breaks increase num pieces by 1 ...
+\end_layout
+
+\begin_layout Itemize
+after Xth break: 6x8 = 48 pieces
+\end_layout
+
+\begin_layout Itemize
+X=47=MxN-1
+\end_layout
+
+\begin_layout Subsection
+Filling station around round track problem
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hl{N filling stations randomly around track, sum(N)= enough gas to go round
+ 1.
+ Is there always a starting point such that can fill up and get round the
+ track?}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $x_{1},...,x_{N}$
+\end_inset
+
+ with 
+\begin_inset Formula $x_{1}+...+x_{N}=1$
+\end_inset
+
+ with 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ = amount of gas at station i
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $y_{1},...,y_{N}$
+\end_inset
+
+ with 
+\begin_inset Formula $y_{1}+...+y_{N}=1$
+\end_inset
+
+ with 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+ = distance to next station i+1
+\end_layout
+
+\begin_layout Itemize
+N=2:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $x_{1}+x_{2}=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $y_{1}+y_{2}=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+either 
+\begin_inset Formula $x_{1}\ge y+1$
+\end_inset
+
+ or 
+\begin_inset Formula $x_{2}\ge y_{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+if 
+\begin_inset Formula $x_{1}\ge y_{1}$
+\end_inset
+
+ choose i=1 as starting point
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $N=n$
+\end_inset
+
+ and use induction for 
+\begin_inset Formula $N=$
+\end_inset
+
+
+\begin_inset Formula $n+1$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+given n+1 stations find the 
+\begin_inset Formula $i:1\le i\le N+1$
+\end_inset
+
+ such that 
+\begin_inset Formula $x_{i}\ge y_{i}$
+\end_inset
+
+ (must exist, same as above)
+\end_layout
+
+\begin_layout Itemize
+at that i, can reach next station
+\end_layout
+
+\begin_layout Itemize
+reduce stations 
+\begin_inset Formula $i,i+1$
+\end_inset
+
+ into one station 
+\begin_inset Formula $i$
+\end_inset
+
+ with gas 
+\begin_inset Formula $x_{i}+x_{i+1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+back to case 
+\begin_inset Formula $N=n$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+induction.
+ Done.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Prisoners and hats Part 2 - cannot hear the guess [induction]
+\end_layout
+
+\begin_layout Itemize
+(
+\begin_inset Formula $g_{i}+$
+\end_inset
+
+
+\begin_inset Formula $\sum_{k\ne0}x_{k})$
+\end_inset
+
+ mod 
+\begin_inset Formula $7=i$
+\end_inset
+
+ with colours 
+\begin_inset Formula $x_{i}\in0...6$
+\end_inset
+
+ and 
+\begin_inset Formula $g_{i}$
+\end_inset
+
+ = guess of prisoner 
+\begin_inset Formula $i\in0..6$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Maths
+\end_layout
+
+\begin_layout Subsection
+Prove 
+\begin_inset Formula $\sqrt{2}$
+\end_inset
+
+ irrational
+\end_layout
+
+\begin_layout Itemize
+trivial
+\end_layout
+
+\begin_layout Subsection
+Derivative of 
+\begin_inset Formula $\ln(x^{\ln x})$
+\end_inset
+
+ ?
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $y=\ln(x^{\ln x})=\ln x\ln x=(\ln x)^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $y'=n(\ln x)^{'}(\ln x)^{n-1}=2\frac{1}{x}\ln x$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Derivative of 
+\begin_inset Formula $\ln\ln(x^{\ln x})$
+\end_inset
+
+ ?
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $y=\ln(x^{\ln x})$
+\end_inset
+
+, 
+\begin_inset Formula $y'=2\frac{1}{x}\ln x$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $u=\ln y$
+\end_inset
+
+,
+\begin_inset Formula $u'=g'\circ f\times f'=\frac{1}{y}y'=\frac{1}{\ln(x^{\ln x})}2\frac{1}{x}\ln x=\frac{2}{x\ln x}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Subsection
+Which is bigger 
+\begin_inset Formula $\pi^{e}\text{ , }$
+\end_inset
+
+
+\begin_inset Formula $e^{\pi}$
+\end_inset
+
+ ?
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\pi^{e}\text{ \ge\ }$
+\end_inset
+
+
+\begin_inset Formula $e^{\pi}$
+\end_inset
+
+ taking ln(): 
+\begin_inset Formula $\ln\pi^{e}\text{ \ge\ }$
+\end_inset
+
+
+\begin_inset Formula $\ln e^{\pi}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $e\ln\pi$
+\end_inset
+
+
+\begin_inset Formula $\ge$
+\end_inset
+
+ 
+\begin_inset Formula $\pi\ln e$
+\end_inset
+
+ ie 
+\begin_inset Formula $\frac{e}{\ln e}\ge\frac{\pi}{\ln\pi}$
+\end_inset
+
+ ie check out 
+\begin_inset Formula $\frac{x}{\ln x}$
+\end_inset
+
+, compute f' etc
+\end_layout
+
+\begin_layout Itemize
+alternative Taylor series 
+\begin_inset Formula $e^{x}=\sum\nicefrac{x^{n}}{n!}=1+x+\frac{x^{2}}{2!}+..\ge1+x$
+\end_inset
+
+ and let 
+\begin_inset Formula $x=\frac{\pi}{e}-1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Compute 
+\begin_inset Formula $\lim_{x\rightarrow+\infty}\frac{e^{x}}{x^{2}}$
+\end_inset
+
+ and 
+\begin_inset Formula $\lim_{x\rightarrow0}x^{2}\ln x$
+\end_inset
+
+ [l'Hospital rule]
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{multicols}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

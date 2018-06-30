@@ -1,0 +1,1355 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{mathtools} % loads amsmath, for math environments etc
+\usepackage{tikz}
+\usetikzlibrary{shapes,positioning,arrows,fit,calc,graphs,graphs.standard}
+\usepackage[nosf]{kpfonts}
+\usepackage[t1]{sourcesanspro}
+\usepackage{multicol}
+\usepackage{wrapfig}
+\usepackage[top=0mm,bottom=4mm,left=3mm,right=2mm]{geometry}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage{microtype}
+\usepackage{setspace}
+\usepackage{tikz}
+\usetikzlibrary{trees}
+\usepackage{enumitem}
+\usepackage{kpfonts,amssymb,empheq,fancybox}
+\usepackage{enumitem}
+\usepackage{pgfplots}
+\usepackage{pagecolor}
+
+\usepackage{xcolor}
+\usepackage{soul}
+\colorlet{highlightgreen}{green!10}
+\sethlcolor{highlightgreen}
+
+%% cell colours
+\usepackage{colortbl}
+
+\setitemize{leftmargin=*,noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt}
+
+\let\bar\overline
+\let\displaystyle\textstyle
+
+\definecolor{myblue}{cmyk}{1,.72,0,.38}
+
+\def\firstcircle{(0,0) circle (1.5cm)}
+\def\secondcircle{(0:2cm) circle (1.5cm)}
+
+\colorlet{circle edge}{myblue}
+\colorlet{circle area}{myblue!5}
+
+\tikzset{filled/.style={fill=circle area, draw=circle edge, thick},
+    outline/.style={draw=circle edge, thick}}
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+
+\newcommand{\myF} {\mathscr{F}}
+\newcommand{\myG} {\mathscr{G}}
+
+\newcommand{\myE} {\mathbb{E}}
+\newcommand{\myQ} {\mathbb{Q}}
+\newcommand{\myN} {\mathbb{N}}
+\newcommand{\myL} {\mathbb{L}}
+
+
+\newcommand{\mycondE}[2]{E \left( #1 | #2 \right) }
+\newcommand{\myMI}{ M_{\infty} }
+\newcommand{\myMn}{ M_{n} }
+\newcommand{\myM}[1]{M_{#1}}
+
+\newcommand\myeq[1]{\stackrel{{\normalfont\mbox{#1}}}{ = }}
+\newcommand\myle[1]{\stackrel{{\normalfont\mbox{#1}}}{ \le }}
+
+\newcommand\myright[1]{\stackrel{\mathclap{\normalfont\mbox{#1}}}{ \Rightarrow }}
+
+\newcommand{\myVar}{ \operatorname{Var} }
+\newcommand{\Var}{ \operatorname{Var} }
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{multicols}{2}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+large
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part
+Old style - Discounting before the crisis
+\end_layout
+
+\begin_layout Section
+Interest rate conventions
+\end_layout
+
+\begin_layout Itemize
+Continuous compounding : 
+\begin_inset Formula $V(t)=exp\left(r(t)t\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Linear compounding : 
+\begin_inset Formula $V(t)=1+r(t)t$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Simple compounding : 
+\begin_inset Formula $V(t)=(1+r(t))^{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Value today of 1 paid in 't' years 
+\begin_inset Formula $P(0,t)=exp\left(-r(t)t\right):=df_{t}$
+\end_inset
+
+ or 
+\begin_inset Formula $df_{t}=$
+\end_inset
+
+
+\begin_inset Formula $\frac{1}{1+rt}$
+\end_inset
+
+ with the other type of rate
+\end_layout
+
+\begin_layout Itemize
+where 
+\begin_inset Formula $r(t)$
+\end_inset
+
+ is the risk-free rate, ie LIBOR.
+\end_layout
+
+\begin_layout Section
+Pricing Linear instruments
+\end_layout
+
+\begin_layout Subsection
+FRA - Forward rate agreement
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw [|->] (0,0) -- (2,0) -- (4, 0) ; 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw [<->] (0,0.5) to[bend left] (2,0.5);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw [<->] (2,0.5) to[bend left] (4,0.5);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw [<->] (0,-0.5) to[bend right] (4,-0.5);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw (2,-1) node [above] {
+\backslash
+scriptsize $
+\backslash
+delta_{0,2}, r(t_0,t_2)$};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw (1,0.5) node [below] {
+\backslash
+scriptsize $
+\backslash
+delta_{1}, r(t_0,t_1)$};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw (3,0.5) node [below] {
+\backslash
+scriptsize $
+\backslash
+delta_{2}, r(t_1,t_2)$};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $1+r(t_{0},t_{2})\delta_{0,2}=(1+r_{1}\delta_{1})(1+r_{2}\delta_{2})$
+\end_inset
+
+ with 
+\begin_inset Formula $r_{2}$
+\end_inset
+
+ unknown (the only one 1 the future) so 
+\begin_inset Formula $r_{2}=f(t_{0},t_{1},t_{2})$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Forward rate between t1,t2 at time t0 = 
+\begin_inset Formula $f(t_{0},t_{1},t_{2})=\frac{1}{\delta_{2}}\left(\frac{1+r(t_{0},t_{2})\delta_{0,2}}{1+r_{1}\delta_{1}}-1\right)=\frac{1}{\delta_{2}}\left(\frac{df_{t1}}{df_{t2}}-1\right)$
+\end_inset
+
+ since 
+\begin_inset Formula $df_{t1}=\frac{1}{1+r_{1}\delta_{1}}$
+\end_inset
+
+ ; 
+\begin_inset Formula $df_{t2}=\frac{1}{1+r_{2}\delta_{2}}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Forward rate between t,t+
+\begin_inset Formula $\delta$
+\end_inset
+
+ at time t0(now) = 
+\begin_inset Formula $f(t_{0},t,t+\delta)=\frac{1}{\delta}\left(\frac{df_{t}}{df_{t+\delta}}-1\right):=f(t,t+\delta)$
+\end_inset
+
+(drop the t0 = now, ie this is the f rate now)
+\end_layout
+
+\begin_layout Itemize
+So PV forward rate = 
+\begin_inset Formula $f(t,t+\delta)\times\delta\times df_{t+\delta}=df_{t}-df_{t+\delta}\Leftarrow$
+\end_inset
+
+ because same forward and discount curve
+\end_layout
+
+\begin_layout Itemize
+AS above 
+\begin_inset Formula $f(t,t+\delta)=\frac{1}{\delta}\left(\frac{df_{t}}{df_{t+\delta}}-1\right)$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+so in the limit 
+\begin_inset Formula $\delta\rightarrow0$
+\end_inset
+
+ we have instantaneous forward = 
+\begin_inset Formula $\lim_{\delta\rightarrow0}f(t,t+\delta):=f(t)=\frac{1}{\delta}\left(\frac{df_{t}}{df_{t+\delta}}-1\right)=\frac{df_{t}-df_{t+\delta}}{df_{t+\delta}\times\delta}=-\frac{1}{df_{t}}\frac{\partial df_{t}}{\partial t}$
+\end_inset
+
+=-
+\begin_inset Formula $\frac{\partial\ln df_{t}}{\partial t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+So instantaneous forward 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hl{$f(t)=-
+\backslash
+frac{
+\backslash
+partial
+\backslash
+ln df_{t}}{
+\backslash
+partial t}$}
+\end_layout
+
+\end_inset
+
+ so 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hl{$df_{t}=exp(-
+\backslash
+int_{0}^{t}f(s)ds)$}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+IR Swap pricing
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $PV_{\{swap\}}=\stackrel{\mathbf{fixed}}{c\sum_{1}^{n}\delta_{i}df_{i}}-\underset{\boldsymbol{float}}{\sum_{1}^{n}f(t_{i-1},t_{i})\delta_{i}df_{i}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $PV_{\{swap\}}=\stackrel{\mathbf{fixed}}{c\sum_{1}^{n}\delta_{i}df_{i}}-\underset{\boldsymbol{float}}{\sum_{1}^{n}(df_{i-1}-df_{i})=}\stackrel{\mathbf{fixed}}{c\sum_{1}^{n}\delta_{i}df_{i}}-(df_{0}-df_{n})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+par := (Pv=0) ; 
+\begin_inset Formula $c:=c_{0}:=\frac{df_{0}-df_{n}}{\sum_{1}^{n}\delta_{i}df_{i}}$
+\end_inset
+
+ ; Annuity := := PVBP = 
+\begin_inset Formula $\sum_{1}^{n}\delta_{i}df_{i}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+FX forward
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+path 
+\end_layout
+
+\begin_layout Plain Layout
+
+(5,0) node(foreignt) {1 Foreign Unit at t} 
+\end_layout
+
+\begin_layout Plain Layout
+
+(0,0) node(foreignnow) {Foreign now = $df_t^f$} 
+\end_layout
+
+\begin_layout Plain Layout
+
+(0,3) node(foreignnowconvert) {Convert now = $ df_t^f 
+\backslash
+times X_0^{f/d}$} 
+\end_layout
+
+\begin_layout Plain Layout
+
+(5,5) node(domt) {Dom at t = $1 
+\backslash
+times X_t^{f/d}$} 
+\end_layout
+
+\begin_layout Plain Layout
+
+(0,5) node(domnow) {Dom now = $ X_t^{f/d} 
+\backslash
+times df_t^d$};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw[->,blue] (foreignt) -- (domt); 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw[->,red] (foreignt) -- (foreignnow); 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw[->,red] (domt) -- (domnow); 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw[<->,blue] (foreignnow) -- (foreignnowconvert) -- (domnow); 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $df_{t}^{f}\times X_{0}^{f/d}=X_{t}^{f/d}\times df_{t}^{d}\Longleftrightarrow X_{t}^{f/d}=\frac{df_{t}^{f}}{df_{t}^{d}}X_{0}^{f/d}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Tenor Swap
+\end_layout
+
+\begin_layout Itemize
+Tenor swap = eg exchange float 3M for float 6M
+\end_layout
+
+\begin_layout Itemize
+From above Pv_float of each individual leg is 
+\begin_inset Formula $PV_{\{float\}}leg=df_{0}-df_{T}$
+\end_inset
+
+ for each T which is a common reset date and in particular at T = maturity
+\end_layout
+
+\begin_layout Itemize
+so at each reset date, and in particular at maturity, PV = 0
+\end_layout
+
+\begin_layout Subsection
+(Cross-currency basis) Swap
+\end_layout
+
+\begin_layout Itemize
+Cross-currency basis swap eg USD 3M LIBOr for EUR 3M LIBOR
+\end_layout
+
+\begin_layout Itemize
+notional is exchnaged at beginnign and end
+\end_layout
+
+\begin_layout Itemize
+Notional of each leg is dictated by spot rate: ie make Notional (dom) =
+ Notional (foreign) x spot : 
+\begin_inset Formula $N_{d}=N_{f}\times X_{0}^{f/d}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+At each fixing , for each currency: pv leg = usual pv float leg + notional=
+ 
+\begin_inset Formula $N_{f}(df_{0}^{f}-df_{T}^{f})+N_{f}(df_{T}^{f})=N_{f}df_{0}^{f}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+so with now, df_0 =1, and just have N_f, and since the notionals are designed
+ to be = after conversion ...
+ 
+\end_layout
+
+\begin_layout Itemize
+pv = 
+\begin_inset Quotes eld
+\end_inset
+
+Nf - Nd
+\begin_inset Quotes erd
+\end_inset
+
+ = 0
+\end_layout
+
+\begin_layout Subsection
+Old style Curve building
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $df_{\{ON\}}=\frac{1}{1+r_{\{ON\}}\delta_{\{ON\}}}$
+\end_inset
+
+ and 
+\begin_inset Formula $df_{\{TN\}}=df_{\{ON\}}\times\frac{1}{1+r_{\{TN\}}\delta_{\{TN\}}}$
+\end_inset
+
+ and 
+\begin_inset Formula $df_{\{xMoneyMarket\}}=df_{\{TN\}}\times\frac{1}{1+r_{\{xM\}}\delta_{\{xM\}}}$
+\end_inset
+
+for all other Money market 3M, 6M, 12M since linealry-compounded and down
+ to spot
+\end_layout
+
+\begin_layout Itemize
+for the swap bit, use quoted swap and the formula above: 
+\begin_inset Formula $c:=c_{0}:=\frac{df_{0}-df_{n}}{\sum_{1}^{n}\delta_{i}df_{i}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Cap/Floors
+\end_layout
+
+\begin_layout Itemize
+Caplet payoff= 
+\begin_inset Formula $N\times[L(t_{\{i-1\}},t_{i})-K]^{+}$
+\end_inset
+
+ N notional, 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $L(t_{\{i-1\}},t_{i})$
+\end_inset
+
+ LIBOR fixing at beginnign of period t_i-1, t_i, K strike
+\end_layout
+
+\begin_layout Itemize
+Floorlet = 
+\begin_inset Formula $N\times[K-L(t_{\{i-1\}},t_{i})]^{+}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Put call parity: Cap - Floor = Payer Swap 
+\begin_inset Formula $\leftarrow$
+\end_inset
+
+ Payer since Pay fix
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+At the money
+\begin_inset Quotes erd
+\end_inset
+
+ means PV Floor == PV Cap so Cap = Floor means swap =0 , ie ATM rate = par
+ swap rate
+\end_layout
+
+\begin_layout Subsection
+FACT 1: Market completeness , Change of Numeraire
+\end_layout
+
+\begin_layout Itemize
+D = stochastic df = 
+\begin_inset Formula $\frac{B(0)}{B(t_{i})}$
+\end_inset
+
+ , and 
+\begin_inset Formula $D(t,T)=\frac{B_{t}}{B_{T}}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+bank account 
+\begin_inset Formula $B_{t}=exp(-\int_{0}^{t}r_{s}ds)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+zero bond price 
+\begin_inset Formula $P(t,T)=\myE\left\{ D(t,T)|\myF_{t}\right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+arbitrage free 
+\begin_inset Formula $\Longleftrightarrow$
+\end_inset
+
+no port with 0 value now with +ve prob of +ve value later
+\end_layout
+
+\begin_layout Itemize
+complete 
+\begin_inset Formula $\Longleftrightarrow$
+\end_inset
+
+ every attainable claim can be relicated by self-financing startegy
+\end_layout
+
+\begin_layout Itemize
+if a market is arbitrage-free and complete, there is a unique measure Q
+ equivalnet to real-world measure [same null sets]
+\end_layout
+
+\begin_layout Itemize
+such that 
+\begin_inset Formula $\pi_{t}:=H_{t}=\myE^{\myQ}\left\{ D(t,T).H|\myF_{t}\right\} =\myE^{\myQ}\left\{ \frac{B_{t}}{B_{T}}.H|\myF_{t}\right\} $
+\end_inset
+
+ here Q := Q^B for the bank account numeraire B
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\frac{H_{t}}{B_{t}}=\myE^{\myQ}\left\{ \frac{H_{T}}{B_{T}}|\myF_{t}\right\} =\myE^{\myQ^{B}}\left\{ \frac{H_{T}}{B_{T}}|\myF_{t}\right\} $
+\end_inset
+
+ - thisis a martingale form by defintion: normalise claim by a stochastically-gr
+owign thing
+\end_layout
+
+\begin_layout Itemize
+this form less convenient for CoN since H_t is the price – anyway
+\end_layout
+
+\begin_layout Itemize
+Change of numeraire = use somethign else than B_t (bank accoutn numeraire)
+ Q^B in the above
+\end_layout
+
+\begin_layout Itemize
+if we have any another numeraire, M_t, then there is a measure Q^M equivalent
+ to the Q^N so that the normalised for the M also a martingale
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+therefore the price of a claim is a martingale for any numeraire
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Radon-Nikodym formula for Q^M vs Q^N: 
+\begin_inset Formula $\dfrac{dQ^{M}}{dQ^{N}}=\nicefrac{\frac{M_{t}}{N_{t}}}{\frac{M_{0}}{N_{0}}}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+therefore 
+\begin_inset Formula $\pi_{t}:=B_{t}\myE^{\myQ^{B}}\left\{ \frac{H_{T}}{B_{T}}|\myF_{t}\right\} =N_{t}\myE^{\myN}\left\{ \frac{H_{T}}{N_{T}}|\myF_{t}\right\} $
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+equivalent: 
+\begin_inset Formula $\pi_{t}:=\myE^{\myQ^{B}}\left\{ \frac{B_{t}}{B_{T}}H_{T}|\myF_{t}\right\} =\myE^{\myN}\left\{ \frac{N_{t}}{N_{T}}H_{T}|\myF_{t}\right\} =\myE^{\myL}\left\{ \frac{L_{t}}{L_{T}}H_{T}|\myF_{t}\right\} $
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Only works when no intermediate payments
+\end_layout
+
+\begin_layout Itemize
+derivative pricing: find a good numeraire so that 
+\begin_inset Formula $\myE^{\myN}\left\{ \frac{H_{T}}{N_{T}}|\myF_{t}\right\} $
+\end_inset
+
+ easy 
+\end_layout
+
+\begin_layout Subsection
+FACT 2: STANDARD BLACK, NORMAL BLACK formulae
+\end_layout
+
+\begin_layout Subsubsection
+Standard Black
+\end_layout
+
+\begin_layout Itemize
+Assume F follows geometric Brownian motion GBM
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\frac{dF}{F}=\mu(t)dt+\sigma(t)dW_{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 0
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width ""
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $F(t)=F(0)exp\left\{ \int_{0}^{t}\left(\mu(s)-\frac{1}{2}\sigma^{2}(s)\right)ds+\int_{0}^{t}\sigma(s)dW(s)\right\} $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+so 
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 0
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width ""
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $ln\frac{F}{F_{0}}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+is 
+\series bold
+N
+\series default
+ { 
+\series bold
+mean
+\series default
+=
+\begin_inset Formula $m(t)=\int_{0}^{t}\left(\mu(s)-\frac{1}{2}\sigma^{2}(s)\right)ds$
+\end_inset
+
+, 
+\series bold
+variance
+\series default
+=
+\begin_inset Formula $v(t)=\int_{0}^{t}\sigma^{2}(s)ds$
+\end_inset
+
+ }
+\end_layout
+
+\begin_layout Itemize
+density of 
+\begin_inset Formula $lnF$
+\end_inset
+
+ is 
+\begin_inset Formula $\rho(ln(x),t)=\frac{1}{\sqrt{2\pi v(t)}}exp\left\{ -\frac{\left(ln\left(\frac{x}{x_{0}}\right)-m(t)\right)^{2}}{2v(t)}\right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Pi=P(T)\myE^{T}\left\{ F(T)-K\right\} ^{+}=P(T)\int_{o}^{\infty}|x-K|^{+}\rho(lnx,T)dlnx$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\myE^{T}$
+\end_inset
+
+is T-forward measure
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Pi=P(T)\left(F_{0}\Phi(d_{+})-K\Phi(d_{-})\right)=P(T)BLACK(1,F,K,v)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Normal Black
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $dF=\sigma(t)dW^{T}(t)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $F(t)=F(0)+\int_{0}^{t}\sigma(s)dW^{T}(s)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+F is N(mean=F(0)=
+\begin_inset Formula $F_{0}$
+\end_inset
+
+,variance=
+\begin_inset Formula $\int_{0}^{t}\sigma^{2}(s)ds$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $E^{T}\left(F(T)-K\right)^{+}=\frac{1}{v}\int_{-\infty}^{+\infty}(x-K)^{+}\phi(\frac{x-F(T)}{v})dx$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Cap/Floors valuation 
+\end_layout
+
+\begin_layout Itemize
+PV of cap : 
+\color blue
+
+\begin_inset Formula $V=\myE\left\{ N\times[L(t_{\{i-1\}},t_{i})-K]^{+}D(0,t_{i})\right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+with 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+D = stochastic df = 
+\begin_inset Formula $\frac{B(0)}{B(t_{i})}$
+\end_inset
+
+ , and 
+\begin_inset Formula $D(t,T)=\frac{B_{t}}{B_{T}}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+bank account 
+\begin_inset Formula $B_{t}=exp(+\int_{0}^{t}r_{s}ds)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+zero bond price 
+\begin_inset Formula $P(t,T)=\myE\left\{ D(t,T)|\myF_{t}\right\} =\myE\left\{ D(t,T)|\myF_{t}\right\} $
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Choose zero-coupon bond P(0,t_i) as numeraire, then:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula $V=\myE\left\{ N\times[L(t_{\{i-1\}},t_{i})-K]^{+}D(0,t_{i})\right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $=\myE\left\{ N\times[L(t_{\{i-1\}},t_{i})-K]^{+}\frac{B(0)}{B(t_{i})}\right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $=\myE^{t_{i}}\left\{ N\times[L(t_{\{i-1\}},t_{i})-K]^{+}\frac{P(0,t_{i})}{P(t_{i},t_{i})}\right\} $
+\end_inset
+
+ with 
+\begin_inset Formula $\myE^{t_{i}}$
+\end_inset
+
+ measure for the P
+\end_layout
+
+\begin_layout Standard
+= 
+\begin_inset Formula $P(0,t_{i})\myE^{t_{i}}\left\{ N\times[L(t_{\{i-1\}},t_{i})-K]^{+}\frac{1}{P(t_{i},t_{i})==1}\right\} $
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+= 
+\begin_inset Formula $P(0,t_{i})\myE^{t_{i}}\left\{ N\times[L(t_{\{i-1\}},t_{i})-K]^{+}\right\} $
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+= 
+\begin_inset Formula $P(0,t_{i})N\myE^{t_{i}}\left\{ [L(t_{\{i-1\}},t_{i})-K]^{+}\right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+= 
+\begin_inset Formula $P(0,t_{i})N\left\{ \myE^{t_{i}}\left\{ \myE^{t_{i}}\left\{ [L(t_{\{i-1\}},t_{i})-K]^{+}\right\} |\myF_{t_{i-1}}\right\} \right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+= 
+\begin_inset Formula $P(0,t_{i})N\myE\left\{ \myE^{t_{i}}\left\{ [L(t_{\{i-1\}},t_{i})-K]^{+}\right\} |\myF_{t_{i-1}}\right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+= 
+\begin_inset Formula $P(0,t_{i})N\myE\left\{ [\myE^{t_{i}}\left\{ L(t_{\{i-1\}},t_{i})|\myF_{t_{i-1}}\right\} -K]^{+}\right\} $
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+However 
+\begin_inset Formula $L(t_{\{i-1\}},t_{i})$
+\end_inset
+
+ is the LIBOR forward and recall 
+\begin_inset Formula $\frac{1}{\delta}\left(\frac{df_{t}}{df_{t+\delta}}-1\right):=f(t,t+\delta)$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+So that 
+\begin_inset Formula $L(t_{\{i-1\}},t_{i})=\frac{1}{\delta_{i-1,i}}\left(\frac{P(0,t_{i-1})}{P(0,t_{i})}-1\right)$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $V=P(0,t_{i})N\myE^{t_{1}}\left\{ [\myE^{t_{i}}\left\{ L(t_{\{i-1\}},t_{i})|\myF_{t_{i-1}}\right\} -K]^{+}\right\} =P(0,t_{i})N\myE^{t_{i}}\left\{ [\myE^{t_{i}}\left\{ \frac{1}{\delta_{i-1,i}}\left(\frac{P(0,t_{i-1})}{P(0,t_{i})}-1\right)|\myF_{t_{i-1}}\right\} -K]^{+}\right\} =P(0,t_{i})N\myE^{t_{i}}\left\{ [\myE^{t_{i}}\left\{ \frac{1}{\delta_{i-1,i}}\left(\frac{P(0,t_{i-1})-P(0.t_{i})}{P(0,t_{i})}\right)|\myF_{t_{i-1}}\right\} -K]^{+}\right\} =P(0,t_{i})N\myE^{t_{i}}[\frac{1}{\delta_{i-1,i}}\left(\frac{P(0,t_{i-1})-P(0.t_{i})}{P(0,t_{i})}\right)-K]^{+}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+But 
+\begin_inset Formula $\frac{P(0,t_{i-1})-P(0.t_{i})}{P(0,t_{i})}$
+\end_inset
+
+ = martingale, as quotient of traded asset 
+\begin_inset Formula $P(0,t_{i-1})-P(0.t_{i})$
+\end_inset
+
+ by numeraire 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $P(0,t_{i})$
+\end_inset
+
+ inside the 
+\begin_inset Formula $\myE^{t_{i}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+so can be modelled by any martingale process, eg geometric brownian motion
+ GBM
+\end_layout
+
+\begin_layout Itemize
+turns out 
+\begin_inset Formula $V=\sum_{i}^{n}BLACK(1,f(t_{i-1},t_{i}),K,\sigma\sqrt{t_{i-1}})\delta_{i}df_{i}$
+\end_inset
+
+ – see proof below
+\end_layout
+
+\begin_layout Itemize
+with 
+\begin_inset Formula $\delta_{i}$
+\end_inset
+
+ length of [
+\begin_inset Formula $t_{i-1},t_{i}$
+\end_inset
+
+],
+\begin_inset Formula $df_{i}$
+\end_inset
+
+ discount factor at 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+,
+\begin_inset Formula $f(t_{i},t_{i-1})$
+\end_inset
+
+forward form discoutn curve
+\end_layout
+
+\begin_layout Subsection
+Swaption valuation
+\end_layout
+
+\begin_layout Itemize
+SwaptionPV=
+\begin_inset Formula $\myE_{t}^{B}\left(D(t,t_{e})NPV^{+}\right)=\myE_{t}^{B}\left[\frac{B(t)}{B(t_{e})}NPV^{+}(t_{e},t_{0},t_{n})\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $=\myE_{t}^{X}\left[\frac{X(t)}{X(t_{e})}NPV^{+}(t_{e},t_{0},t_{n})\right]\forall X$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $NPV^{+}=NA(t_{e},t_{0},t_{n})\left[c(t_{e},t_{0},t_{n})-K\right]^{+}$
+\end_inset
+
+so choose annuity as numeraire
+\end_layout
+
+\begin_layout Itemize
+SwaptionPV =
+\begin_inset Formula $\myE_{t}^{A}\left[\frac{A(t)}{A(t_{e})}NPV^{+}(t_{e},t_{0},t_{n})\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $=\myE_{t}^{A}\left[\frac{A(t,t_{0},t_{n})}{A(t_{e},t_{0},t_{n})}NA(t_{e},t_{0},t_{n})\left[c(t_{e},t_{0},t_{n})-K\right]^{+}\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $=NA(t,t_{0},t_{n})\myE_{t}^{A}\left[c(t_{e},t_{0},t_{n})-K\right]^{+}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+but 
+\begin_inset Formula $c(t_{e},t_{0},t_{n})=\frac{P(t_{e},t_{0})-P(t_{e},t_{n})}{A(t_{e},t_{0},t_{n})}$
+\end_inset
+
+ and relative asset prices (./A) is martingale under 
+\begin_inset Formula $E^{A}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+so 
+\begin_inset Formula $c(t_{now},t_{0},t_{n})=E_{t}^{A}(c(t_{e},t_{0},t_{n}))$
+\end_inset
+
+ ie process has no drift so choose GBM
+\end_layout
+
+\begin_layout Itemize
+so 
+\begin_inset Formula $dc(t,t_{0},t_{n})=\sigma c(t,t_{0},t_{n})dW^{A}(t)$
+\end_inset
+
+ , 
+\end_layout
+
+\begin_layout Itemize
+and as above 
+\begin_inset Formula $\ln c$
+\end_inset
+
+ is N(m=
+\begin_inset Formula $\ln c(0,t_{0}t_{n})-\sigma^{2}\frac{t}{2}$
+\end_inset
+
+,variance=
+\begin_inset Formula $\sigma^{2}t$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+so 
+\begin_inset Formula $E_{t}^{A}(c(t_{e},t_{0},t_{n})-K)^{+}=\int_{0}^{\infty}|x-K|^{+}\rho(x)dx$
+\end_inset
+
+ and swaption formula 
+\end_layout
+
+\begin_layout Itemize
+IMPORTANT CASH-SETTLED SWAPTION: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{multicols}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
